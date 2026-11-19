@@ -1,17 +1,19 @@
-# Vishnu Rajendran Nair — Portfolio
+# Vishnu Rajendran Nair — Engineering Portfolio
 
-Static portfolio website. No build tools or dependencies required.
+Live site: https://vishnurnair99.github.io/
 
-## Publish with GitHub Pages
+GitHub Pages publishes the repository root from the main branch.
 
-1. Create a public repository named YOUR-USERNAME.github.io in your GitHub account.
-2. Upload index.html, style.css, script.js and .nojekyll to the repository root.
-3. Open Settings > Pages.
-4. Select Deploy from a branch, then main and /(root), and Save.
-5. Visit https://YOUR-USERNAME.github.io after the deployment completes.
+## Editing
 
-For an existing repository with another name, the URL is https://YOUR-USERNAME.github.io/REPOSITORY-NAME/.
+- index.html: profile, experience, projects and contact links
+- style.css: core layout
+- redesign.css: aerospace presentation and responsive 3D viewer styles
+- engine.js: original procedural 3D engine and interaction controls
+- script.js: email copy control
 
-The site uses relative asset paths and works at either URL.
+The engine is an illustrative hardware study, not project CAD, a validated engineering design, or a replica of a company's engine. It supports dragging, keyboard rotation, zoom, pause/resume, wireframe and view reset. A static illustration appears if WebGL is unavailable. Reduced-motion preferences disable automatic rotation. Rendering pauses while the viewer is off screen or the page is hidden.
 
-Edit index.html for content, style.css for design and script.js for the email-copy interaction.
+Three.js r170 is included locally under vendor/ with its MIT license. No external model or texture downloads are required.
+
+Use a local HTTP server to preview the site; ES modules do not work reliably by opening index.html as a file.
