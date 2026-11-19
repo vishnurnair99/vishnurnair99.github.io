@@ -32,3 +32,15 @@ if('IntersectionObserver' in window){
  },{rootMargin:'-10% 0px -35% 0px',threshold:0});
  journeyCards.forEach(card=>journeyObserver.observe(card));
 }
+
+const photoDialog=document.getElementById('project-photo-dialog');
+document.querySelectorAll('[data-photo]').forEach(link=>link.addEventListener('click',event=>{
+ if(!photoDialog||typeof photoDialog.showModal!=='function')return;
+ event.preventDefault();
+ document.getElementById('photo-dialog-title').textContent=link.dataset.photo;
+ const image=document.getElementById('photo-dialog-image');image.src=link.href;image.alt=link.querySelector('img')?.alt||link.dataset.photo;
+ document.getElementById('photo-dialog-original').href=link.href;
+ photoDialog.showModal();
+}));
+document.getElementById('photo-dialog-close')?.addEventListener('click',()=>photoDialog.close());
+photoDialog?.addEventListener('click',event=>{if(event.target===photoDialog){const bounds=photoDialog.getBoundingClientRect();if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom)photoDialog.close();}});
