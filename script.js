@@ -14,3 +14,21 @@ document.querySelectorAll('[data-drawing]').forEach(button=>button.addEventListe
  for(const id of ['drawing-open','drawing-fullsize'])document.getElementById(id).href='assets/'+drawing.file;
  document.getElementById('drawing-announcement').textContent=drawing.title+' selected.';
 }));
+
+// Keep the orbital map and the visible experience card in sync while reading.
+const journeyCards=[...document.querySelectorAll('[data-journey-card]')];
+function activateJourney(id){
+ document.querySelectorAll('[data-orbit]').forEach(point=>point.classList.toggle('is-active',point.dataset.orbit===id));
+ journeyCards.forEach(card=>card.classList.toggle('is-active',card.id===id));
+ document.querySelectorAll('[data-orbit-link]').forEach(link=>{if(link.dataset.orbitLink===id)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});
+}
+document.querySelectorAll('[data-orbit-link]').forEach(link=>link.addEventListener('click',()=>activateJourney(link.dataset.orbitLink)));
+if('IntersectionObserver' in window){
+ const visibleCards=new Map();
+ const journeyObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>visibleCards.set(entry.target.id,{visible:entry.isIntersecting,top:entry.boundingClientRect.top}));
+  const nearest=[...visibleCards].filter(([,item])=>item.visible).sort((a,b)=>Math.abs(a[1].top)-Math.abs(b[1].top))[0];
+  if(nearest)activateJourney(nearest[0]);
+ },{rootMargin:'-10% 0px -35% 0px',threshold:0});
+ journeyCards.forEach(card=>journeyObserver.observe(card));
+}
