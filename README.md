@@ -1,19 +1,14 @@
-# Vishnu Rajendran Nair — Engineering Portfolio
+# Vishnu Rajendran Nair — Fluid Systems Design Engineer
 
-Live site: https://vishnurnair99.github.io/
+Live portfolio: https://vishnurnair99.github.io/
 
-GitHub Pages publishes the repository root from the main branch.
+GitHub Pages publishes the repository root from main. No build step or external rendering dependencies are required.
 
-## Editing
+- index.html — portfolio content and project structure
+- style.css — responsive layout and professional light theme
+- script.js — drawing selection and email copy controls
+- assets/ — Daedalus drawing previews and the supplied design-study PDF
 
-- index.html: profile, experience, projects and contact links
-- style.css: core layout
-- redesign.css: aerospace presentation and responsive 3D viewer styles
-- engine.js: original procedural 3D engine and interaction controls
-- script.js: email copy control
+The Daedalus package contains separate MMH/NTO and CH4/LOX P&IDs and a cryogenic over-pressure bow-tie study. Preserve the source document's review status, open actions and student-study limitations when describing it.
 
-The engine is an illustrative hardware study, not project CAD, a validated engineering design, or a replica of a company's engine. It supports dragging, keyboard rotation, zoom, pause/resume, wireframe and view reset. A static illustration appears if WebGL is unavailable. Reduced-motion preferences disable automatic rotation. Rendering pauses while the viewer is off screen or the page is hidden.
-
-Three.js r170 is included locally under vendor/ with its MIT license. No external model or texture downloads are required.
-
-Use a local HTTP server to preview the site; ES modules do not work reliably by opening index.html as a file.
+The former illustrative 3D engine and its rendering dependencies have been removed.
